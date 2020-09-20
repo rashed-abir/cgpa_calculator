@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+      integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+      crossorigin="anonymous"
+    />
+
+    <title>CGPA Calculator</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      .body {
+        height: 100%;
+        flex-wrap: wrap;
+        display: flex;
+        background-color: whitesmoke;
+      }
+      .header {
+        background-color: #102c4e;
+        color: white;
+        justify-content: space-between;
+        text-align: center;
+        width: 100%;
+        height: 3rem;
+        font-size: 2rem;
+      }
+      .form-page {
+        width: 400px;
+        padding: 1rem;
+      }
+      .footer {
+        background-color: #102c4e;
+        color: white;
+        justify-content: space-between;
+        text-align: center;
+        font-size: 1rem;
+      }
+      .table1 {
+        margin-left: 4rem;
+      }
+      .table thead {
+        background-color: #279a33;
+        color: white;
+      }
+      .all-table {
+        display: flex;
+        margin-top: 2rem;
+        flex-wrap: wrap;
+      }
+      .full-page {
+        width: 100%;
+      }
+      .sgpa {
+        padding: 1rem;
+        margin-top: 2rem;
+      }
+      .hint {
+        margin-left: 2.8rem;
+      }
+      #cgpa {
+        padding: 1rem;
+      }
+      #totalcreadit {
+        margin-left: 1rem;
+      }
+      .table {
+        border: 1px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="full-page">
+      <div class="header">
+        <header>
+          <label>CGPA Calculator</label>
+        </header>
+      </div>
+      <div class="body">
+        <div class="form-page">
+          <form onsubmit="event.preventDefault();onFormSubmit();">
+            <div class="form-group">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="semester name"
+                id="semester"
+                autocomplete="off"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <input
+                type="number"
+                class="form-control"
+                placeholder="credit"
+                id="creadit"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <input
+                autocomplete="off"
+                type="text"
+                class="form-control"
+                placeholder="SGPA"
+                id="sgpa"
+                required
+              />
+            </div>
+            <button type="submit" id="submit" class="btn btn-primary">
+              Submit
+            </button>
+            <button
+              onclick="calculate(); javascript:hideTable();"
+              type="button"
+              class="btn btn-info"
+            >
+              calculate cgpa
+            </button>
+            <button
+              onclick="reloadPage();"
+              type="button"
+              class="btn btn-danger"
+            >
+              Reset
+            </button>
+            <br />
+
+            <h5 id="cgpa"></h5>
+            <h5 id="totalcreadit"></h5>
+            <div class="sgpa">
+              <table class="table" id="list">
+                <thead>
+                  <tr>
+                    <th scope="col">semester no.</th>
+                    <th scope="col">creadit</th>
+                    <th scope="col">SGPA</th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+            </div>
+          </form>
+        </div>
+        <div class="all-table">
+          <div class="table1">
+            <table class="table" id="table">
+              <thead>
+                <tr>
+                  <small id="info" class="hint">DIU old creadit list</small>
+                  <th scope="col">semester no.</th>
+                  <th scope="col">credit</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>12</td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>14</td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td>14</td>
+                </tr>
+                <tr>
+                  <td>4</td>
+                  <td>14</td>
+                </tr>
+                <tr>
+                  <td>5</td>
+                  <td>11</td>
+                </tr>
+                <tr>
+                  <td>6</td>
+                  <td>13</td>
+                </tr>
+                <tr>
+                  <td>7</td>
+                  <td>11</td>
+                </tr>
+                <tr>
+                  <td>8</td>
+                  <td>13</td>
+                </tr>
+                <tr>
+                  <td>9</td>
+                  <td>12</td>
+                </tr>
+                <tr>
+                  <td>10</td>
+                  <td>12</td>
+                </tr>
+                <tr>
+                  <td>11</td>
+                  <td>13</td>
+                </tr>
+                <tr>
+                  <td>12</td>
+                  <td>09</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="footer">
+        <footer>developed by @rashed</footer>
+      </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+      integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+      integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      function reloadPage() {
+        location.reload();
+      }
+
+      function onFormSubmit() {
+        var formData = readFormData();
+        insert(formData);
+        reset();
+      }
+
+      function calculate() {
+        var table = document.getElementById("list"),
+          sum = 0,
+          cgpa,
+          creadit = 0,
+          count = 0;
+        for (var i = 1; i < table.rows.length; i++) {
+          sum = sum + parseFloat(table.rows[i].cells[2].innerHTML);
+          creadit = creadit + parseInt(table.rows[i].cells[1].innerHTML);
+          count = count + 1;
+        }
+        cgpa = sum / count;
+        document.getElementById("totalcreadit").innerHTML =
+          "Completed Credit : " + creadit;
+        document.getElementById("cgpa").innerHTML =
+          "Your CGPA is : " + cgpa.toFixed(2);
+      }
+
+      function readFormData() {
+        var formData = {};
+        formData["semester"] = document.getElementById("semester").value;
+        formData["creadit"] = document.getElementById("creadit").value;
+        formData["sgpa"] = document.getElementById("sgpa").value;
+        return formData;
+      }
+
+      function insert(data) {
+        var table = document
+          .getElementById("list")
+          .getElementsByTagName("tbody")[0];
+        var newRow = table.insertRow(table.length);
+        cell1 = newRow.insertCell(0);
+        cell1.innerHTML = data.semester;
+        cell2 = newRow.insertCell(1);
+        cell2.innerHTML = data.creadit;
+        cell3 = newRow.insertCell(2);
+        cell3.innerHTML = data.sgpa;
+      }
+      function reset() {
+        document.getElementById("semester").value = "";
+        document.getElementById("creadit").value = "";
+        document.getElementById("sgpa").value = "";
+      }
+
+      function hideTable() {
+        document.getElementById("table").style.visibility = "hidden";
+        document.getElementById("info").style.visibility = "hidden";
+      }
+    </script>
+  </body>
+</html>
