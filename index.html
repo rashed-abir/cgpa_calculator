@@ -29,6 +29,7 @@
         flex-wrap: wrap;
         display: flex;
         background-color: whitesmoke;
+        justify-content: space-between;
       }
       .header {
         background-color: #102c4e;
@@ -42,6 +43,7 @@
       .form-page {
         width: 400px;
         padding: 1rem;
+        text-align: center;
       }
       .footer {
         background-color: #102c4e;
@@ -50,24 +52,26 @@
         text-align: center;
         font-size: 1rem;
       }
-      .table1 {
-        margin-left: 4rem;
-      }
       .table thead {
         background-color: #279a33;
         color: white;
       }
       .all-table {
         display: flex;
-        margin-top: 2rem;
         flex-wrap: wrap;
+        justify-content: center;
+      }
+      .my-link {
+        text-decoration: none;
+      }
+      .my-link:hover {
+        text-decoration: none;
       }
       .full-page {
         width: 100%;
       }
       .sgpa {
         padding: 1rem;
-        margin-top: 2rem;
       }
       .hint {
         margin-left: 2.8rem;
@@ -90,7 +94,7 @@
           <label>CGPA Calculator</label>
         </header>
       </div>
-      <div class="body">
+      <div class="body container">
         <div class="form-page">
           <form onsubmit="event.preventDefault();onFormSubmit();">
             <div class="form-group">
@@ -140,22 +144,22 @@
               Reset
             </button>
             <br />
-
+            <br />
             <h5 id="cgpa"></h5>
             <h5 id="totalcreadit"></h5>
-            <div class="sgpa">
-              <table class="table" id="list">
-                <thead>
-                  <tr>
-                    <th scope="col">semester no.</th>
-                    <th scope="col">creadit</th>
-                    <th scope="col">SGPA</th>
-                  </tr>
-                </thead>
-                <tbody></tbody>
-              </table>
-            </div>
           </form>
+        </div>
+        <div class="sgpa">
+          <table class="table" id="list">
+            <thead>
+              <tr>
+                <th scope="col">semester no.</th>
+                <th scope="col">creadit</th>
+                <th scope="col">SGPA</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
         </div>
         <div class="all-table">
           <div class="table1">
@@ -222,7 +226,12 @@
         </div>
       </div>
       <div class="footer">
-        <footer>developed by @rashed</footer>
+        <footer>
+          Developed by
+          <a class="my-link" href="https://rashed-abir.web.app/" target="_blank"
+            >Rashed Abir</a
+          >
+        </footer>
       </div>
     </div>
 
